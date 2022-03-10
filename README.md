@@ -81,6 +81,13 @@ const onSuccess: SuccessCallback = (c, e) => {
 | onError   | _(cbjs: ClipboardJS, e: Event) => void_ |         | -                     |
 | btnText   | string                                  | Copy    | copy button text      |
 
+## Slots
+| name    | explain                |
+| ------- | ---------------------- |
+| default | content                |
+| trigger | custom trigger element |
+
+
 ## Ref
 
 | name      | explain               | params |
