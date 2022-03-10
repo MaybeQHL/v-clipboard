@@ -3,10 +3,10 @@
     <h1>v-clipboard</h1>
     <div class="content">
       <m-panel title="Basic usage">
-        <v-clipboard text="text 1" :onSuccess="onSuccess">text 1</v-clipboard>
+        <v-clipboard text="text 1" @success="onSuccess">text 1</v-clipboard>
       </m-panel>
       <m-panel title="Slot usage">
-        <v-clipboard text="text 2" :onSuccess="onSuccess" :config="config" ref="clipboard">
+        <v-clipboard text="text 2" @success="onSuccess" :config="config" ref="clipboard">
           text 2
           <template #trigger>
             <button size="small" @click="clickCopy">复制</button>

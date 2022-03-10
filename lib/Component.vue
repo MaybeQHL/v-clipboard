@@ -34,34 +34,28 @@ export default defineComponent({
             default: 'Copy'
         }
     },
-    setup(p) {
+    setup(p, { emit }) {
         const props = unref(p)
         const clickCopy = () => {
             const clipboard = new ClipboardJS(".v-clipboard__trigger", props.config);
             clipboard.on("success", function (e) {
+
                 // Free memory
                 clipboard.destroy();
 
                 // Custom success callback
-                if (props.onSuccess) {
-                    props.onSuccess(e, clipboard);
-                    return;
-                }
-                console.log("Copy succeeded!", e);
+                emit('success', e, clipboard);
 
+                console.log("Copy succeeded!", e);
             });
             clipboard.on("error", (e) => {
                 //  Free memory
                 clipboard.destroy();
 
-                // Copy not supported
-                console.log("Copy failed!", e);
-
                 // Custom error callback
-                if (props.onError) {
-                    props.onError(e, clipboard);
-                    return;
-                }
+                emit('error', e, clipboard);
+
+                console.log("Copy error!", e);
 
             });
         }

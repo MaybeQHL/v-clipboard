@@ -54,7 +54,7 @@ Vue.use(VClipboard);
 ### Basic Usage
 ```
 <template>
- <v-clipboard text="text 1" :onSuccess="onSuccess">text 1</v-clipboard>
+ <v-clipboard text="text 1" @success="onSuccess">text 1</v-clipboard>
 </template>
 
 <script lang="ts" setup>
@@ -76,12 +76,17 @@ const onSuccess: SuccessCallback = (e,c) => {
 
 ## Props
 
-| name      | type                                   | default | remark                |
-| --------- | -------------------------------------- | ------- | --------------------- |
-| config    | _{}_                                   |         | `clipboard.js`Options |
-| onSuccess | _(e: Event,cbjs: ClipboardJS) => void_ |         | -                     |
-| onError   | _(e: Event,cbjs: ClipboardJS) => void_ |         | -                     |
-| btnText   | string                                 | Copy    | copy button text      |
+| name    | type   | default | remark                |
+| ------- | ------ | ------- | --------------------- |
+| config  | _{}_   |         | `clipboard.js`Options |
+| btnText | string | Copy    | copy button text      |
+
+## Events
+| name    | type                                   |
+| ------- | -------------------------------------- |
+| success | _(e: Event,cbjs: ClipboardJS) => void_ |
+| error   | _(e: Event,cbjs: ClipboardJS) => void_ |
+
 
 ## Slots
 | name    | explain                |
