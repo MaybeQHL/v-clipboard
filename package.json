@@ -1,13 +1,14 @@
 {
   "name": "@maybecode/v-clipboard",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./dist-lib/v-clipboard.umd.js",
   "module": "./dist-lib/v-clipboard.es.js",
   "exports": {
     ".": {
       "import": "./dist-lib/v-clipboard.es.js",
       "require": "./dist-lib/v-clipboard.umd.js"
-    }
+    },
+    "./dist-lib/style.css": "./dist-lib/style.css"
   },
   "types": "./types/index.d.ts",
   "files": [
