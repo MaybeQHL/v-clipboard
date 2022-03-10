@@ -1,7 +1,7 @@
 
 # v-clipboard
 
-A directive for Vue 2 & 3 base on [clipboard.js](https://github.com/zenorocha/clipboard.js).
+A Compoent for Vue 2 & 3 base on [clipboard.js](https://github.com/zenorocha/clipboard.js).
 
 <p align="left">
 If you think it's good , give me a star.Thanks.
