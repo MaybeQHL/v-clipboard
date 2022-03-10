@@ -3,78 +3,77 @@
         <div class="v-clipboard__content">
             <slot></slot>
         </div>
-        <div class="v-clipboard__trigger" :data-clipboard-text="props.text">
+        <div class="v-clipboard__trigger" :data-clipboard-text="text">
             <slot name="trigger" v-if="$slots.trigger"></slot>
             <a v-else class="v-clipboard__btn" @click="clickCopy">{{ btnText }}</a>
         </div>
     </div>
 </template>
-<script lang="ts" setup>
+<script lang="ts">
 import ClipboardJS from "clipboard";
 
-const props = defineProps({
-    text: {
-        type: String,
-        required: true
+import { defineComponent, unref } from 'vue-demi'
+export default defineComponent({
+    name: 'VClipboard',
+    props: {
+        text: {
+            type: String,
+            required: true
+        },
+        onSuccess: {
+            type: Function
+        },
+        onError: {
+            type: Function
+        },
+        config: {
+            type: Object
+        },
+        btnText: {
+            type: String,
+            default: 'Copy'
+        }
     },
-    onSuccess: {
-        type: Function
-    },
-    onError: {
-        type: Function
-    },
-    config: {
-        type: Object
-    },
-    btnText: {
-        type: String,
-        default: 'Copy'
+    setup(p) {
+        const props = unref(p)
+        const clickCopy = () => {
+            const clipboard = new ClipboardJS(".v-clipboard__trigger", props.config);
+            clipboard.on("success", function (e) {
+                // Free memory
+                clipboard.destroy();
+
+                // Custom success callback
+                if (props.onSuccess) {
+                    props.onSuccess(e, clipboard);
+                    return;
+                }
+                console.log("Copy succeeded!", e);
+
+            });
+            clipboard.on("error", (e) => {
+                //  Free memory
+                clipboard.destroy();
+
+                // Copy not supported
+                console.log("Copy failed!", e);
+
+                // Custom error callback
+                if (props.onError) {
+                    props.onError(e, clipboard);
+                    return;
+                }
+
+            });
+        }
+
+        return {
+            clickCopy
+        }
+
     }
 })
-
-
-
-const clickCopy = () => {
-    const clipboard = new ClipboardJS(".v-clipboard__trigger", props.config);
-    clipboard.on("success", function (e) {
-        // Free memory
-        clipboard.destroy();
-
-        // Custom success callback
-        if (props.onSuccess) {
-            props.onSuccess(e, clipboard);
-            return;
-        }
-        console.log("Copy succeeded!", e);
-
-    });
-    clipboard.on("error", (e) => {
-        //  Free memory
-        clipboard.destroy();
-
-        // Copy not supported
-        console.log("Copy failed!", e);
-
-        // Custom error callback
-        if (props.onError) {
-            props.onError(e, clipboard);
-            return;
-        }
-
-    });
-}
-
-
-defineExpose({
-    clickCopy
-})
-
 </script>
-<script lang="ts">
-export default {
-    name: 'VClipboard'
-}
-</script>
+
 <style lang="scss" scoped>
 .v-clipboard {
     .v-clipboard__content {

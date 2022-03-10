@@ -33,8 +33,8 @@ const onSuccess: SuccessCallback = (e, c) => {
   // Free memory
   c.destroy();
 }
-
 </script>
+
 <style scoped lang="scss">
 * {
   padding: 0px;
