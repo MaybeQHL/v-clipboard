@@ -15,5 +15,5 @@ export default class VClipboard extends BaseComponent {
 }
 
 export type Config = ClipboardJS.Options | undefined;
-export type SuccessCallback = (cbjs: ClipboardJS, e: Event) => void
-export type ErrorCallback = (cbjs: ClipboardJS, e: Event) => void
+export type SuccessCallback = (e: Event, cbjs: ClipboardJS,) => void
+export type ErrorCallback = (e: Event, cbjs: ClipboardJS) => void

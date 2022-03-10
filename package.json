@@ -1,6 +1,6 @@
 {
   "name": "@maybecode/v-clipboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist-lib/v-clipboard.umd.js",
   "module": "./dist-lib/v-clipboard.es.js",
   "exports": {

@@ -28,7 +28,7 @@ const clipboard = ref<VClipboard>();
 const clickCopy = () => {
   clipboard.value?.clickCopy();
 }
-const onSuccess: SuccessCallback = (c, e) => {
+const onSuccess: SuccessCallback = (e, c) => {
   alert(`Copy ${e.text} succeeded!`);
   // Free memory
   c.destroy();

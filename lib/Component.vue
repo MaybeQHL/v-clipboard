@@ -42,7 +42,7 @@ const clickCopy = () => {
 
         // Custom success callback
         if (props.onSuccess) {
-            props.onSuccess(clipboard, e);
+            props.onSuccess(e, clipboard);
             return;
         }
         console.log("Copy succeeded!", e);
@@ -57,7 +57,7 @@ const clickCopy = () => {
 
         // Custom error callback
         if (props.onError) {
-            props.onError(clipboard, e);
+            props.onError(e, clipboard);
             return;
         }
 

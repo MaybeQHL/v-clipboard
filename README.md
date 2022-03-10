@@ -69,19 +69,19 @@ const clipboard = ref<VClipboard>();
 const clickCopy = () => {
   clipboard.value?.clickCopy();
 }
-const onSuccess: SuccessCallback = (c, e) => {
+const onSuccess: SuccessCallback = (e,c) => {
   alert(`Copy ${e.text} succeeded!`);
 }
 ```
 
 ## Props
 
-| name      | type                                    | default | remark                |
-| --------- | --------------------------------------- | ------- | --------------------- |
-| config    | _{}_                                    |         | `clipboard.js`Options |
-| onSuccess | _(cbjs: ClipboardJS, e: Event) => void_ |         | -                     |
-| onError   | _(cbjs: ClipboardJS, e: Event) => void_ |         | -                     |
-| btnText   | string                                  | Copy    | copy button text      |
+| name      | type                                   | default | remark                |
+| --------- | -------------------------------------- | ------- | --------------------- |
+| config    | _{}_                                   |         | `clipboard.js`Options |
+| onSuccess | _(e: Event,cbjs: ClipboardJS) => void_ |         | -                     |
+| onError   | _(e: Event,cbjs: ClipboardJS) => void_ |         | -                     |
+| btnText   | string                                 | Copy    | copy button text      |
 
 ## Slots
 | name    | explain                |
