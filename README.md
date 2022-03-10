@@ -36,6 +36,7 @@ yarn add @maybecode/v-clipboard @vue/composition-api
 ```
 import { createApp } from 'vue';
 import VClipboard from '@maybecode/v-clipboard'
+import '@maybecode/v-clipboard/dist-lib/style.css'
 
 const app = createApp();
 
@@ -45,6 +46,7 @@ app.use(VClipboard);
 ```
 import Vue from 'vue';
 import VClipboard from '@maybecode/v-clipboard'
+import '@maybecode/v-clipboard/dist-lib/style.css'
 
 Vue.use(VClipboard);
 
